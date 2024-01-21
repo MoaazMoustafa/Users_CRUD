@@ -1,0 +1,23 @@
+version: '3.2'
+services:
+  app:
+    build: .
+    expose:
+      - 3000
+    ports:
+      - 8000:3000
+    depends_on:
+      - database
+    environment:
+      API_KEY: f85b37cc439d4121bbeb8b774f6617c0
+      JWT_SECRET_KEY: emery_gpo_backlands_panama_cobble
+    
+  database:
+    image: mongo
+    ports:
+      - 27019:27017
+    volumes:
+      - ./data:/data/db
+
+  redis-server:
+    image: 'redis'
