@@ -9,8 +9,8 @@ services:
     depends_on:
       - database
     environment:
-      API_KEY: f85b37cc439d4121bbeb8b774f6617c0
       JWT_SECRET_KEY: emery_gpo_backlands_panama_cobble
+      MONGOURL: mongodb://database:27017/users
     
   database:
     image: mongo

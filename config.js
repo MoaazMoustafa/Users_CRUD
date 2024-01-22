@@ -5,9 +5,9 @@ const getEnv = (envName, required = true) => {
 };
 
 const appConfig = {
-  API_KEY: getEnv('API_KEY'),
-  JWT_SECRET_KEY: getEnv('JWT_SECRET_KEY'),
-  newsBaseURL: 'https://newsapi.org/v2'
+  JWT_SECRET_KEY: getEnv('JWT_SECRET_KEY', false),
+  MONGOURL: getEnv('MONGOURL'),
+  PORT: getEnv('PORT', false) || 3000
 }
 
 module.exports = appConfig;

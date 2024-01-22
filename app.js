@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-// const newsRoutes = require("./routes/news");
 const usersRoutes = require("./routes/users");
 const mongoose = require("mongoose");
 const bodyParser = require('body-parser');
@@ -20,11 +19,11 @@ const loggerMiddleware = pinoHttp({
     logger
 });
 
+const {PORT, MONGOURL} = require("./config")
 
 app.use(loggerMiddleware);
 app.use(cors());
 app.use(bodyParser.json());
-// app.use("/api/news", newsRoutes);
 app.use("/api/users", usersRoutes);
 
 
@@ -36,9 +35,9 @@ app.use((error, req, res, next) => {
     });
 });
 
-const mongoURL = "mongodb://database:27017/users"
 
-mongoose.connect(mongoURL).then(
-    app.listen(3000)
+mongoose.connect(MONGOURL).then(
+    app.listen(PORT)
 
 ).catch(err => console.log(err));
+module.exports = app;
