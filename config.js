@@ -6,7 +6,7 @@ const getEnv = (envName, required = true) => {
 
 const appConfig = {
   JWT_SECRET_KEY: getEnv('JWT_SECRET_KEY', false),
-  MONGOURL: getEnv('MONGOURL', false),
+  MONGOURL: getEnv('MONGOURL'),
   PORT: getEnv('PORT', false) || 3000,
 };
 
